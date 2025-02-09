@@ -1,1 +1,168 @@
 Knn algorithm
+Here are some possible **viva questions** related to **K-Nearest Neighbors (KNN) classification** and **machine learning concepts**, along with their answers:
+
+---
+
+### **🔹 Basic KNN Questions**
+#### **1. What is K-Nearest Neighbors (KNN)?**
+📌 **Answer:**  
+KNN is a **supervised learning algorithm** used for **classification and regression**. It works by finding the **k nearest neighbors** of a data point and assigning the most common class among them.
+
+---
+
+#### **2. How does KNN work?**
+📌 **Answer:**  
+1. Choose a value for **k** (number of neighbors).  
+2. Calculate the **distance** (e.g., Euclidean distance) between the new data point and all training samples.  
+3. Select the **k nearest neighbors**.  
+4. Assign the most **frequent class** (for classification) or **average value** (for regression).  
+
+---
+
+#### **3. What is the role of k in KNN?**
+📌 **Answer:**  
+- `k` controls how many neighbors **influence the prediction**.
+- **Low k (e.g., k=1)** → More sensitive to noise (**overfitting**).  
+- **High k (e.g., k=20)** → More generalized but may lead to **underfitting**.  
+- We **tune k** to find the best performance.
+
+---
+
+#### **4. How do you choose the best k in KNN?**
+📌 **Answer:**  
+We select `k` by:
+- Testing multiple values and choosing the one with **highest accuracy**.
+- Using **cross-validation** to find the optimal value.
+- A common rule of thumb: **k ≈ sqrt(n)** (where `n` is the number of samples).
+
+---
+
+#### **5. What distance metrics are used in KNN?**
+📌 **Answer:**  
+1. **Euclidean Distance** → Most common  
+   \[
+   d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
+   \]
+2. **Manhattan Distance** → For grid-based data  
+   \[
+   d = |x_2 - x_1| + |y_2 - y_1|
+   \]
+3. **Minkowski Distance** → General form of both  
+4. **Cosine Similarity** → For text data  
+
+---
+
+### **🔹 Model Training and Evaluation Questions**
+#### **6. Why do we split data into training and testing sets?**
+📌 **Answer:**  
+To evaluate model performance.  
+- **Training set** → Used to train the model.  
+- **Test set** → Used to measure how well the model generalizes to unseen data.  
+
+A common split is **80% training, 20% testing**.
+
+---
+
+#### **7. What does the `train_test_split()` function do?**
+📌 **Answer:**  
+It **randomly splits** data into **training and test sets** based on the given `test_size` and `random_state`.  
+```python
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+```
+- `test_size=0.2` → 20% for testing, 80% for training.
+- `random_state=42` → Ensures reproducibility.
+
+---
+
+#### **8. Why do we use `LabelEncoder()` in machine learning?**
+📌 **Answer:**  
+- Converts **categorical labels** (e.g., "Malignant", "Benign") into **numerical values** (e.g., `0`, `1`).
+- Many ML models require numerical inputs.
+
+Example:
+```python
+from sklearn.preprocessing import LabelEncoder
+label_encoder = LabelEncoder()
+y = label_encoder.fit_transform(y)
+```
+
+---
+
+#### **9. What is `accuracy_score()` in KNN?**
+📌 **Answer:**  
+It measures **how many predictions were correct** out of total predictions.
+\[
+\text{Accuracy} = \frac{\text{Correct Predictions}}{\text{Total Predictions}}
+\]
+
+Example:
+```python
+from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(y_test, predictions)
+```
+
+---
+
+#### **10. What are some evaluation metrics for classification models?**
+📌 **Answer:**  
+1. **Accuracy** → Overall correctness  
+2. **Precision** → Correct positive predictions  
+3. **Recall (Sensitivity)** → Correctly identified positives  
+4. **F1-Score** → Harmonic mean of Precision & Recall  
+5. **Confusion Matrix** → Shows TP, FP, FN, TN  
+
+---
+
+### **🔹 KNN vs Other ML Algorithms**
+#### **11. How does KNN differ from decision trees?**
+| Feature | KNN | Decision Tree |
+|---------|----|---------------|
+| **Type** | Instance-based (lazy) | Model-based (eager) |
+| **Training Time** | Slow | Fast |
+| **Prediction Time** | Fast | Slow |
+| **Works well with** | Small datasets | Large datasets |
+
+---
+
+#### **12. Is KNN sensitive to outliers?**
+📌 **Answer:**  
+Yes! Since KNN relies on **distance calculations**, outliers can **skew predictions**.  
+**Solution**: Use normalization (`MinMaxScaler`) or remove outliers.
+
+---
+
+### **🔹 Optimization and Improvements**
+#### **13. How can we improve KNN performance?**
+📌 **Answer:**  
+- **Feature Scaling** (Standardization/Normalization)  
+- **Choosing optimal k value**  
+- **Using KD-Tree or BallTree** (for faster search)  
+- **Handling missing values**  
+
+---
+
+#### **14. What is the time complexity of KNN?**
+📌 **Answer:**  
+- **Training Time** → **O(1)** (No actual training)  
+- **Prediction Time** → **O(n × d)** (for n samples, d dimensions)  
+This makes KNN **slow** for large datasets.
+
+---
+
+#### **15. What are the advantages and disadvantages of KNN?**
+| **Advantages** | **Disadvantages** |
+|---------------|-------------------|
+| Simple to implement | Slow for large datasets |
+| No need for training | Sensitive to irrelevant features |
+| Works well with small data | Affected by imbalanced data |
+| Handles multi-class classification | Memory-intensive |
+
+---
+
+### **📌 Final Tips for Viva**
+- Understand **how KNN works** (distance, k value, nearest neighbors).  
+- Be ready to explain **data preprocessing** (scaling, handling missing values).  
+- Know the **pros and cons** of KNN compared to other algorithms.  
+- Be prepared to **write basic Python code snippets** for KNN.  
+
+Would you like me to generate a **sample viva dialogue** to help you practice? 🎤😊
